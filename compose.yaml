@@ -1,0 +1,128 @@
+# Levanta TODO el backend con MySQL:  docker compose up --build
+# - 3 servidores MySQL 8.4 (uno por microservicio, cada uno con su volumen)
+# - 3 microservicios con perfil "mysql"
+# - API Gateway: el ÚNICO puerto publicado al exterior (8080)
+x-mysql-healthcheck: &mysql-healthcheck
+  interval: 5s
+  timeout: 3s
+  retries: 20
+  start_period: 40s
+
+services:
+  db-usuarios:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: animate_usuarios
+      MYSQL_USER: animate
+      MYSQL_PASSWORD: ${DB_USUARIOS_PASSWORD:?Genera el archivo .env}
+      MYSQL_ROOT_PASSWORD: ${DB_USUARIOS_PASSWORD:?Genera el archivo .env}
+    volumes:
+      - mysql-usuarios:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$${MYSQL_PASSWORD}\" mysql -h 127.0.0.1 -u animate -D animate_usuarios -e 'SELECT 1'"]
+      <<: *mysql-healthcheck
+
+  db-catalogo:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: animate_catalogo
+      MYSQL_USER: animate
+      MYSQL_PASSWORD: ${DB_CATALOGO_PASSWORD:?Genera el archivo .env}
+      MYSQL_ROOT_PASSWORD: ${DB_CATALOGO_PASSWORD:?Genera el archivo .env}
+    volumes:
+      - mysql-catalogo:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$${MYSQL_PASSWORD}\" mysql -h 127.0.0.1 -u animate -D animate_catalogo -e 'SELECT 1'"]
+      <<: *mysql-healthcheck
+
+  db-pedidos:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: animate_pedidos
+      MYSQL_USER: animate
+      MYSQL_PASSWORD: ${DB_PEDIDOS_PASSWORD:?Genera el archivo .env}
+      MYSQL_ROOT_PASSWORD: ${DB_PEDIDOS_PASSWORD:?Genera el archivo .env}
+    volumes:
+      - mysql-pedidos:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$${MYSQL_PASSWORD}\" mysql -h 127.0.0.1 -u animate -D animate_pedidos -e 'SELECT 1'"]
+      <<: *mysql-healthcheck
+
+  usuarios:
+    build:
+      context: .
+      dockerfile: usuarios-service/Dockerfile
+    environment:
+      PORT: 8081
+      SPRING_PROFILES_ACTIVE: mysql
+      DB_URL: jdbc:mysql://db-usuarios:3306/animate_usuarios?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+      DB_USER: animate
+      DB_PASSWORD: ${DB_USUARIOS_PASSWORD}
+      GATEWAY_URL: http://localhost:8080
+      FRONTEND_ORIGINS: ${FRONTEND_ORIGINS}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      USUARIO_PASSWORD: ${USUARIO_PASSWORD}
+      KEYS_DIRECTORY: /app/data/keys
+    depends_on:
+      db-usuarios:
+        condition: service_healthy
+    volumes:
+      - claves-jwt:/app/data
+
+  catalogo:
+    build:
+      context: .
+      dockerfile: catalogo-service/Dockerfile
+    environment:
+      PORT: 8082
+      SPRING_PROFILES_ACTIVE: mysql
+      DB_URL: jdbc:mysql://db-catalogo:3306/animate_catalogo?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+      DB_USER: animate
+      DB_PASSWORD: ${DB_CATALOGO_PASSWORD}
+      AUTH_JWKS_URL: http://usuarios:8081/api/auth/jwks
+      GATEWAY_URL: http://localhost:8080
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Genera el archivo .env}
+    depends_on:
+      db-catalogo:
+        condition: service_healthy
+
+  pedidos:
+    build:
+      context: .
+      dockerfile: pedidos-service/Dockerfile
+    environment:
+      PORT: 8083
+      SPRING_PROFILES_ACTIVE: mysql
+      DB_URL: jdbc:mysql://db-pedidos:3306/animate_pedidos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
+      DB_USER: animate
+      DB_PASSWORD: ${DB_PEDIDOS_PASSWORD}
+      AUTH_JWKS_URL: http://usuarios:8081/api/auth/jwks
+      GATEWAY_URL: http://localhost:8080
+      CATALOGO_URL: http://catalogo:8082
+      INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Genera el archivo .env}
+    depends_on:
+      db-pedidos:
+        condition: service_healthy
+
+  gateway:
+    build:
+      context: .
+      dockerfile: api-gateway/Dockerfile
+    environment:
+      USUARIOS_URL: http://usuarios:8081
+      CATALOGO_URL: http://catalogo:8082
+      PEDIDOS_URL: http://pedidos:8083
+      FRONTEND_ORIGINS: ${FRONTEND_ORIGINS}
+    ports:
+      - "8080:8080"
+    depends_on:
+      - usuarios
+      - catalogo
+      - pedidos
+
+volumes:
+  mysql-usuarios:
+  mysql-catalogo:
+  mysql-pedidos:
+  claves-jwt:

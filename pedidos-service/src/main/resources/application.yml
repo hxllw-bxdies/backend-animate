@@ -1,0 +1,23 @@
+server:
+  port: ${PORT:8083}
+spring:
+  application:
+    name: pedidos
+  profiles:
+    default: h2
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  issuer: ${JWT_ISSUER:animate-usuarios}
+  jwks: ${AUTH_JWKS_URL:http://localhost:8081/api/auth/jwks}
+  gateway-url: ${GATEWAY_URL:http://localhost:8080}
+  # Dirección DIRECTA de Catálogo (no pasa por el Gateway).
+  catalogo-url: ${CATALOGO_URL:http://localhost:8082}
+  internal-key: ${INTERNAL_API_KEY:local-cambiar-clave-interna-32-caracteres}

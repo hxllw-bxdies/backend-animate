@@ -1,0 +1,516 @@
+[
+  {
+    "id": 1,
+    "titulo": "BOCCHI THE ROCK",
+    "genero": "SLICE OF LIFE",
+    "vistas": 10976,
+    "fechaAgregado": "2026-01-05",
+    "sinopsis": "Sinopsis pendiente para Manga 1. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/BOCCHI-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 14990,
+        "stock": 8,
+        "img": "/Imagenes/Mangas/BOCCHI-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 14990,
+        "stock": 2,
+        "img": "/Imagenes/Mangas/BR-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 14990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/BR-T3.jpg"
+      },
+      {
+        "tomo": 4,
+        "precio": 14990,
+        "stock": 4,
+        "img": "/Imagenes/Mangas/BR-T4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "AYANASHI",
+    "genero": "SHONEN",
+    "vistas": 4157,
+    "fechaAgregado": "2026-01-22",
+    "sinopsis": "Sinopsis pendiente para Manga 2. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/AY-T2.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 8990,
+        "stock": 8,
+        "img": "/Imagenes/Mangas/AY-T2.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 8990,
+        "stock": 4,
+        "img": "/Imagenes/Mangas/AYANASHI-T1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "BOLSA DE PAPEL KUN ESTA ENAMORADO",
+    "genero": "shojo",
+    "vistas": 1020,
+    "fechaAgregado": "2026-02-10",
+    "sinopsis": "Sinopsis pendiente para Manga 3. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/BOLSA-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 9990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/BOLSA-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 9990,
+        "stock": 5,
+        "img": "/Imagenes/Mangas/B-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "titulo": "CALL OF THE NIGHT",
+    "genero": "SEINEN",
+    "vistas": 10363,
+    "fechaAgregado": "2026-02-28",
+    "sinopsis": "Sinopsis pendiente para Manga 4. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/Call of the night T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/Call of the night T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 15990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/C-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 15990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/C-T3.jpg"
+      },
+      {
+        "tomo": 4,
+        "precio": 15990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/C-T4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "titulo": "CRIMSON GRIMOIRE",
+    "genero": "FANTASIA",
+    "vistas": 4111,
+    "fechaAgregado": "2026-03-14",
+    "sinopsis": "Sinopsis pendiente para Manga 5. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/CRIMSON T-1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 2,
+        "img": "/Imagenes/Mangas/CRIMSON T-1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 8990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/CR-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "titulo": "TSUMISTUKI",
+    "genero": "TERROR",
+    "vistas": 5052,
+    "fechaAgregado": "2026-03-30",
+    "sinopsis": "Sinopsis pendiente para Manga 6. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/DARK-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 9990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/DARK-T1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "titulo": "DEADPOOL SAMURAI",
+    "genero": "SHONEN",
+    "vistas": 2084,
+    "fechaAgregado": "2026-04-11",
+    "sinopsis": "Sinopsis pendiente para Manga 7. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/DEADPOOL.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 14990,
+        "stock": 5,
+        "img": "/Imagenes/Mangas/DEADPOOL.jpg"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "titulo": "DIMENSION W",
+    "genero": "SEINEN",
+    "vistas": 8027,
+    "fechaAgregado": "2026-04-25",
+    "sinopsis": "Sinopsis pendiente para Manga 8. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/Dimension W T-1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/Dimension W T-1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 15990,
+        "stock": 2,
+        "img": "/Imagenes/Mangas/DW-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "titulo": "EL TIEMPO CONTIGO",
+    "genero": "FANTASIA",
+    "vistas": 10799,
+    "fechaAgregado": "2026-05-08",
+    "sinopsis": "Sinopsis pendiente para Manga 9. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/EL TIEMPO -T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/EL TIEMPO -T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 8990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/ET-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 9990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/ET-T3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "titulo": "GANGSTA",
+    "genero": "JOSEI",
+    "vistas": 5241,
+    "fechaAgregado": "2026-05-19",
+    "sinopsis": "Sinopsis pendiente para Manga 10. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/GANGASTA -T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 9990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/GANGASTA -T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 8990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/G-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "titulo": "HEART GEAR",
+    "genero": "FANTASIA",
+    "vistas": 5054,
+    "fechaAgregado": "2026-06-02",
+    "sinopsis": "Sinopsis pendiente para Manga 11. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/HEART-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 10990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/HEART-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 10990,
+        "stock": 2,
+        "img": "/Imagenes/Mangas/HEART-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "titulo": "JOSEE EL TIGRE Y LOS PECES",
+    "genero": "SLICE OF LIFE",
+    "vistas": 11699,
+    "fechaAgregado": "2026-06-17",
+    "sinopsis": "Sinopsis pendiente para Manga 12. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/JOSEE-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 8,
+        "img": "/Imagenes/Mangas/JOSEE-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 9990,
+        "stock": 5,
+        "img": "/Imagenes/Mangas/J-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "titulo": "BOCCHI THE ROCK GAIDEN: KIKURI HIROI",
+    "genero": "SLICE OF LIFE",
+    "vistas": 4510,
+    "fechaAgregado": "2026-07-01",
+    "sinopsis": "Sinopsis pendiente para Manga 13. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/KIKURI T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 14990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/KIKURI T1.jpg"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "titulo": "KOMI NO SE PUEDE COMUNICAR",
+    "genero": "SLICE OF LIFE",
+    "vistas": 11716,
+    "fechaAgregado": "2026-07-14",
+    "sinopsis": "Sinopsis pendiente para Manga 14. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/KOMI-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 18990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/KOMI-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 18990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/K-2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 18990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/K-3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "titulo": "LA NOBLEZA DE LAS FLORES",
+    "genero": "SHOJO",
+    "vistas": 4886,
+    "fechaAgregado": "2026-07-29",
+    "sinopsis": "Sinopsis pendiente para Manga 15. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/LA NOBLEZA T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 9990,
+        "stock": 5,
+        "img": "/Imagenes/Mangas/LA NOBLEZA T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 10990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/LN-T2.jpg"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "titulo": "NIER AUTOMATA PEARL HARVOR DECENT",
+    "genero": "FANTASIA",
+    "vistas": 11238,
+    "fechaAgregado": "2026-08-03",
+    "sinopsis": "Sinopsis pendiente para Manga 16. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/NIER-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 12990,
+        "stock": 8,
+        "img": "/Imagenes/Mangas/NIER-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 12990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/N-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 10990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/N-T3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "titulo": "RE: ZERO",
+    "genero": "isekai",
+    "vistas": 9697,
+    "fechaAgregado": "2026-08-11",
+    "sinopsis": "Sinopsis pendiente para Manga 17. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/RE ZERO -T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 14990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/RE ZERO -T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 14990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/RZ-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 14990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/RZ-T3.jpg"
+      },
+      {
+        "tomo": 4,
+        "precio": 14990,
+        "stock": 2,
+        "img": "/Imagenes/Mangas/RZ-T4.jpg"
+      },
+      {
+        "tomo": 5,
+        "precio": 14990,
+        "stock": 1,
+        "img": "/Imagenes/Mangas/RZ-T5.jpg"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "titulo": "WATCH DOGS TOKYO",
+    "genero": "SHONEN",
+    "vistas": 2766,
+    "fechaAgregado": "2026-08-18",
+    "sinopsis": "Sinopsis pendiente para Manga 18. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/WATCH DOGS-T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 16990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/WATCH DOGS-T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 16990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/WD-T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 16990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/WD-T3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "titulo": "YOUR NAME",
+    "genero": "SLICE OF LIFE",
+    "vistas": 11649,
+    "fechaAgregado": "2026-08-24",
+    "sinopsis": "Sinopsis pendiente para Manga 19. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/YOUR NAME -T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 15990,
+        "stock": 0,
+        "img": "/Imagenes/Mangas/YOUR NAME -T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 12990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/YN -T2.jpg"
+      },
+      {
+        "tomo": 3,
+        "precio": 15990,
+        "stock": 3,
+        "img": "/Imagenes/Mangas/YN-T3.jpg"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "titulo": "MISSION FAMILIA YOZAKURA",
+    "genero": "seinen",
+    "vistas": 9564,
+    "fechaAgregado": "2026-08-30",
+    "sinopsis": "Sinopsis pendiente para Manga 20. Reemplaza este texto con la descripción real de la serie.",
+    "imgPortada": "/Imagenes/Mangas/YOZAKURA -T1.jpg",
+    "volumenes": [
+      {
+        "tomo": 1,
+        "precio": 13990,
+        "stock": 8,
+        "img": "/Imagenes/Mangas/YOZAKURA -T1.jpg"
+      },
+      {
+        "tomo": 2,
+        "precio": 13990,
+        "stock": 10,
+        "img": "/Imagenes/Mangas/YF-T2.jpg"
+      }
+    ]
+  }
+]
