@@ -1,0 +1,23 @@
+server:
+  port: ${PORT:8082}
+spring:
+  application:
+    name: catalogo
+  profiles:
+    default: h2
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+app:
+  issuer: ${JWT_ISSUER:animate-usuarios}
+  # Clave pública de Usuarios para validar los JWT.
+  jwks: ${AUTH_JWKS_URL:http://localhost:8081/api/auth/jwks}
+  gateway-url: ${GATEWAY_URL:http://localhost:8080}
+  # Clave compartida con Pedidos para el endpoint interno /internal/ventas.
+  internal-key: ${INTERNAL_API_KEY:local-cambiar-clave-interna-32-caracteres}
