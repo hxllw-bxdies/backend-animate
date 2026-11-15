@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Objects;
 
 /** Operaciones sobre la base de Pedidos. Cada método es una transacción local. */
 @Service
@@ -33,7 +34,7 @@ public class PedidoStore {
     Optional<Pedido> anterior = repo.findById(id);
     if (anterior.isPresent()) {
       Pedido p = anterior.get();
-      if (!p.usuarioId.equals(usuarioId))
+      if (!Objects.equals(p.usuarioId, usuarioId))
         throw new ApiException(403, "Ese pedido pertenece a otro usuario.");
       if (!p.huella.equals(huella))
         throw new ApiException(409, "Utiliza una clave nueva si cambias el contenido del pedido.");
@@ -86,7 +87,7 @@ public class PedidoStore {
   /** Un usuario solo puede ver sus pedidos; el admin puede ver cualquiera. */
   public Pedido obtener(String id, Jwt jwt) {
     Pedido p = repo.findById(id).orElseThrow(() -> new ApiException(404, "Pedido no encontrado."));
-    if (!esAdmin(jwt) && !p.usuarioId.toString().equals(jwt.getSubject()))
+    if (!esAdmin(jwt) && !String.valueOf(p.usuarioId).equals(jwt.getSubject()))
       throw new ApiException(403, "No tienes acceso a ese pedido.");
     return p;
   }

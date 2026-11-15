@@ -43,6 +43,17 @@ public class PedidosController {
             clave.toString(), Long.valueOf(jwt.getSubject()), jwt.getClaimAsString("correo"), form));
   }
 
+  @Operation(summary = "Compra como invitado: no requiere sesión y el comprador queda como \"Invitado\".")
+  @PostMapping("/invitado")
+  @ResponseStatus(HttpStatus.CREATED)
+  public PedidoResponse crearInvitado(
+          @Parameter(description = "UUID nuevo por cada compra (ej: crypto.randomUUID())")
+          @RequestHeader("Idempotency-Key")
+          UUID clave,
+          @Valid @RequestBody PedidoRequest form) {
+    return PedidoMapper.toResponse(workflow.comprar(clave.toString(), null, "Invitado", form));
+  }
+
   @Operation(summary = "Mis compras (PerfilUsuario).")
   @GetMapping("/mios")
   public List<PedidoResponse> mios(@AuthenticationPrincipal Jwt jwt) {
