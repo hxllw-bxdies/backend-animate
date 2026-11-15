@@ -25,6 +25,8 @@ public class SecurityConfig {
             a.requestMatchers(
                     "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html", "/actuator/health")
                 .permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/pedidos/invitado")
+                .permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/pedidos")
                 .hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/api/pedidos/*/estado")

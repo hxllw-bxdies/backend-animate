@@ -14,7 +14,7 @@ public class Pedido {
   @Column(length = 36)
   public String id;
 
-  @Column(nullable = false)
+  //si es null, la compra se registra como invitado
   public Long usuarioId;
 
   /** Correo del comprador tomado del JWT, para mostrarlo en el panel admin. */
