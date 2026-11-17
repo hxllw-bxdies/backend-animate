@@ -10,6 +10,7 @@ x-mysql-healthcheck: &mysql-healthcheck
 
 services:
   db-usuarios:
+    restart: unless-stopped
     image: mysql:8.4
     environment:
       MYSQL_DATABASE: animate_usuarios
@@ -23,6 +24,7 @@ services:
       <<: *mysql-healthcheck
 
   db-catalogo:
+    restart: unless-stopped
     image: mysql:8.4
     environment:
       MYSQL_DATABASE: animate_catalogo
@@ -36,6 +38,7 @@ services:
       <<: *mysql-healthcheck
 
   db-pedidos:
+    restart: unless-stopped
     image: mysql:8.4
     environment:
       MYSQL_DATABASE: animate_pedidos
@@ -49,6 +52,7 @@ services:
       <<: *mysql-healthcheck
 
   usuarios:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: usuarios-service/Dockerfile
@@ -58,7 +62,8 @@ services:
       DB_URL: jdbc:mysql://db-usuarios:3306/animate_usuarios?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8
       DB_USER: animate
       DB_PASSWORD: ${DB_USUARIOS_PASSWORD}
-      GATEWAY_URL: http://localhost:8080
+      GATEWAY_URL: ${GATEWAY_URL:-http://localhost:8080}
+      JAVA_TOOL_OPTIONS: "-Xmx512m"
       FRONTEND_ORIGINS: ${FRONTEND_ORIGINS}
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
@@ -71,6 +76,7 @@ services:
       - claves-jwt:/app/data
 
   catalogo:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: catalogo-service/Dockerfile
@@ -81,13 +87,15 @@ services:
       DB_USER: animate
       DB_PASSWORD: ${DB_CATALOGO_PASSWORD}
       AUTH_JWKS_URL: http://usuarios:8081/api/auth/jwks
-      GATEWAY_URL: http://localhost:8080
+      GATEWAY_URL: ${GATEWAY_URL:-http://localhost:8080}
+      JAVA_TOOL_OPTIONS: "-Xmx512m"
       INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Genera el archivo .env}
     depends_on:
       db-catalogo:
         condition: service_healthy
 
   pedidos:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: pedidos-service/Dockerfile
@@ -98,7 +106,8 @@ services:
       DB_USER: animate
       DB_PASSWORD: ${DB_PEDIDOS_PASSWORD}
       AUTH_JWKS_URL: http://usuarios:8081/api/auth/jwks
-      GATEWAY_URL: http://localhost:8080
+      GATEWAY_URL: ${GATEWAY_URL:-http://localhost:8080}
+      JAVA_TOOL_OPTIONS: "-Xmx512m"
       CATALOGO_URL: http://catalogo:8082
       INTERNAL_API_KEY: ${INTERNAL_API_KEY:?Genera el archivo .env}
     depends_on:
@@ -106,6 +115,7 @@ services:
         condition: service_healthy
 
   gateway:
+    restart: unless-stopped
     build:
       context: .
       dockerfile: api-gateway/Dockerfile
@@ -114,6 +124,7 @@ services:
       CATALOGO_URL: http://catalogo:8082
       PEDIDOS_URL: http://pedidos:8083
       FRONTEND_ORIGINS: ${FRONTEND_ORIGINS}
+      JAVA_TOOL_OPTIONS: "-Xmx512m"
     ports:
       - "8080:8080"
     depends_on:

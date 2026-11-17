@@ -3,7 +3,6 @@ package cl.animate.catalogo.service;
 import cl.animate.catalogo.dto.MangaRequest;
 import cl.animate.catalogo.dto.MangaResponse;
 import cl.animate.catalogo.dto.MangaUpdateRequest;
-import cl.animate.catalogo.dto.PrecioStockRequest;
 import cl.animate.catalogo.dto.TomoRequest;
 import cl.animate.catalogo.dto.TomoResponse;
 import cl.animate.catalogo.model.Manga;
@@ -112,18 +111,24 @@ public class MangasService {
   }
 
   @Transactional
-  public MangaResponse cambiarPrecioYStock(Long id, int numero, PrecioStockRequest r) {
+  public MangaResponse editarTomo(Long id, int numero, TomoRequest r) {
     Manga m = activo(id);
     Tomo t = tomo(m, numero);
     t.precio = r.precio();
     t.stock = r.stock();
+    t.img = r.img().trim();
     return vista(repo.saveAndFlush(m));
   }
 
   @Transactional
   public MangaResponse eliminarTomo(Long id, int numero) {
     Manga m = activo(id);
-    m.tomos.remove(tomo(m, numero)); // orphanRemoval borra la fila de la tabla tomos
+    Tomo t = tomo(m, numero);
+    // Solo el último: así la numeración que ven los clientes nunca queda con huecos
+    int ultimo = m.tomos.stream().mapToInt(x -> x.numero).max().orElse(0);
+    if (numero != ultimo)
+      throw new ApiException(409, "Solo se puede eliminar el último tomo (Vol. " + ultimo + ").");
+    m.tomos.remove(t); // orphanRemoval borra la fila de la tabla tomos
     return vista(repo.saveAndFlush(m));
   }
 

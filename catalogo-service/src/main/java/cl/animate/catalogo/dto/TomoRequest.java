@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-/** Nuevo tomo. El número se asigna solo (el siguiente al mayor), como generarNuevoTomo(). */
+/** Datos de un tomo: al agregarlo (el número se asigna solo, el siguiente al mayor) y al editarlo. */
 public record TomoRequest(
     @NotNull(message = "El precio es obligatorio") @Min(value = 1, message = "El precio debe ser mayor a 0") @Max(10000000)
         Integer precio,

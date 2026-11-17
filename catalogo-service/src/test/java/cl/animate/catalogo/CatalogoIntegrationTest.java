@@ -123,14 +123,33 @@ class CatalogoIntegrationTest {
         .andExpect(status().isCreated())
         .andExpect(jsonPath("$.volumenes[1].tomo").value(2));
 
+    // Editar el tomo 2: precio, stock e imagen
     mvc.perform(
-            put("/api/mangas/" + id + "/tomos/2")
-                .contentType("application/json")
-                .content("{\"precio\":12990,\"stock\":7}"))
-        .andExpect(jsonPath("$.volumenes[1].precio").value(12990));
+                    put("/api/mangas/" + id + "/tomos/2")
+                            .contentType("application/json")
+                            .content("{\"precio\":12990,\"stock\":7,\"img\":\"/Imagenes/Mangas/cs2-nueva.jpg\"}"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.volumenes[1].precio").value(12990))
+            .andExpect(jsonPath("$.volumenes[1].img").value("/Imagenes/Mangas/cs2-nueva.jpg"));
 
+    // Sin imagen, la edición se rechaza
+    mvc.perform(
+                    put("/api/mangas/" + id + "/tomos/2")
+                            .contentType("application/json")
+                            .content("{\"precio\":12990,\"stock\":7}"))
+            .andExpect(status().isBadRequest());
+
+    // Solo se elimina el último tomo: el 1 no (409), el 2 sí
+    mvc.perform(delete("/api/mangas/" + id + "/tomos/1")).andExpect(status().isConflict());
     mvc.perform(delete("/api/mangas/" + id + "/tomos/2"))
-        .andExpect(jsonPath("$.volumenes.length()").value(1));
+            .andExpect(jsonPath("$.volumenes.length()").value(1));
+
+    // Al volver a agregarlo recupera el número 2: la numeración no queda con huecos
+    mvc.perform(
+                    post("/api/mangas/" + id + "/tomos")
+                            .contentType("application/json")
+                            .content("{\"precio\":10990,\"stock\":3,\"img\":\"/Imagenes/Mangas/cs2.jpg\"}"))
+            .andExpect(jsonPath("$.volumenes[1].tomo").value(2));
 
     mvc.perform(delete("/api/mangas/" + id)).andExpect(status().isNoContent());
     mvc.perform(get("/api/mangas/" + id)).andExpect(status().isNotFound());
