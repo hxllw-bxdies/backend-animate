@@ -3,7 +3,6 @@ package cl.animate.catalogo.controller;
 import cl.animate.catalogo.dto.MangaRequest;
 import cl.animate.catalogo.dto.MangaResponse;
 import cl.animate.catalogo.dto.MangaUpdateRequest;
-import cl.animate.catalogo.dto.PrecioStockRequest;
 import cl.animate.catalogo.dto.TomoRequest;
 import cl.animate.catalogo.service.MangasService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -75,14 +74,14 @@ public class MangasController {
     return service.agregarTomo(id, r);
   }
 
-  @Operation(summary = "Cambia precio y stock de un tomo (ADMIN).")
+  @Operation(summary = "Edita precio, stock e imagen de un tomo (ADMIN).")
   @PutMapping("/{id}/tomos/{tomo}")
-  public MangaResponse cambiarTomo(
-      @PathVariable Long id, @PathVariable int tomo, @Valid @RequestBody PrecioStockRequest r) {
-    return service.cambiarPrecioYStock(id, tomo, r);
+  public MangaResponse editarTomo(
+          @PathVariable Long id, @PathVariable int tomo, @Valid @RequestBody TomoRequest r) {
+    return service.editarTomo(id, tomo, r);
   }
 
-  @Operation(summary = "Elimina un tomo del manga (ADMIN).")
+  @Operation(summary = "Elimina el último tomo del manga; otro tomo responde 409 (ADMIN).")
   @DeleteMapping("/{id}/tomos/{tomo}")
   public MangaResponse eliminarTomo(@PathVariable Long id, @PathVariable int tomo) {
     return service.eliminarTomo(id, tomo);

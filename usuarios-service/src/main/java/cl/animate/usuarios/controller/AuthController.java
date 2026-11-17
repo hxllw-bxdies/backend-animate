@@ -49,7 +49,7 @@ public class AuthController {
     this.service = service;
     this.keys = keys;
     this.secure = secure;
-    Set<String> permitidos = new HashSet<>(Arrays.asList(origins.split(",")));
+    Set<String> permitidos = new HashSet<>(Arrays.stream(origins.split(",")).map(String::trim).toList());
     permitidos.add(gatewayUrl); // permite probar el login desde Swagger del Gateway
     this.origenes = Set.copyOf(permitidos);
   }
