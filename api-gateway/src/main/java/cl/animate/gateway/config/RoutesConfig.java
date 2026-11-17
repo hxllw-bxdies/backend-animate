@@ -57,7 +57,12 @@ public class RoutesConfig {
     c.setAllowedOrigins(Arrays.stream(origenes.split(",")).map(String::trim).toList());
     c.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
     c.setAllowedHeaders(
-        List.of("Content-Type", "Authorization", "Idempotency-Key", "X-Requested-With"));
+            List.of(
+                    "Content-Type",
+                    "Authorization",
+                    "Idempotency-Key",
+                    "X-Requested-With",
+                    "X-Refresh-Token"));
     c.setAllowCredentials(true);
     c.setMaxAge(3600L);
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
